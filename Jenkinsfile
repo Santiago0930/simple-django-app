@@ -8,28 +8,27 @@ pipeline {
         }
         stage('pylint') {
             steps {
-                sh 'python -m pylint **/*.py || true'
+                sh 'python -m pylint **/*.py'
             }
         }
         stage('navigate') {
             steps {
-                sh 'cd simple-django-app/cool_counters'
+                sh 'cool_counters'
             }
         }
-        stage('create_venv') {
+        stage('install2') {
             steps {
-                sh 'python3 -m venv venv'
-                sh './venv/bin/pip install django'
+                sh 'python -m pip install django'
             }
         }
         stage('build') {
             steps {
-                sh './venv/bin/python manage.py migrate'
+                sh 'python manage.py migrate'
             }
         }
         stage('run') {
             steps {
-                sh './venv/bin/python manage.py runserver'
+                sh 'python manage.py runserver'
             }
         }
     }
