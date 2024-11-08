@@ -8,7 +8,7 @@ pipeline {
         }
         stage('pylint') {
             steps {
-                sh 'python -m pylint **/*.py || true'
+                sh 'python3 -m pylint **/*.py || true'
             }
         }
         stage('navigate') {
@@ -18,17 +18,17 @@ pipeline {
         }
         stage('install2') {
             steps {
-                sh 'python -m pip install django'
+                sh 'python3 -m pip install django'
             }
         }
         stage('build') {
             steps {
-                sh 'python manage.py migrate'
+                sh 'python3 manage.py migrate'
             }
         }
         stage('run') {
             steps {
-                sh 'python manage.py runserver'
+                sh 'python3 manage.py runserver'
             }
         }
     }
