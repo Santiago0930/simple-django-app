@@ -13,7 +13,7 @@ pipeline {
         }
         stage('navigate') {
             steps {
-                sh 'cd simple-django-app/cool_counters'
+                sh 'cd cool_counters'
             }
         }
         stage('install2') {
