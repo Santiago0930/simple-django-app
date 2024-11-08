@@ -13,22 +13,23 @@ pipeline {
         }
         stage('navigate') {
             steps {
-                sh 'cd cool_counters'
+                sh 'cd simple-django-app/cool_counters'
             }
         }
-        stage('install2') {
+        stage('create_venv') {
             steps {
-                sh 'sudo python -m pip install django'
+                sh 'python3 -m venv venv'
+                sh './venv/bin/pip install django'
             }
         }
         stage('build') {
             steps {
-                sh 'python manage.py migrate'
+                sh './venv/bin/python manage.py migrate'
             }
         }
         stage('run') {
             steps {
-                sh 'python manage.py runserver'
+                sh './venv/bin/python manage.py runserver'
             }
         }
     }
