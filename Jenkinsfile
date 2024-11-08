@@ -9,7 +9,6 @@ pipeline {
         stage('pylint') {
             steps {
                 sh 'python -m pylint **/*.py || true'
-                //sh 'python -m pylint **/*.py' en Jenkins bota error sin el true
             }
         }
         stage('navigate') {
@@ -24,12 +23,12 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'python manage.py migrate'
+                sh 'python cool_counters/manage.py migrate'
             }
         }
         stage('run') {
             steps {
-                sh 'python manage.py runserver'
+                sh 'python cool_counters/manage.py runserver'
             }
         }
     }
