@@ -18,7 +18,7 @@ pipeline {
         }
         stage('install2') {
             steps {
-                sh 'python -m pip install django'
+                sh 'sudo python -m pip install django'
             }
         }
         stage('build') {
