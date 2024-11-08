@@ -4,6 +4,9 @@ pipeline{
         stage('install1'){
             sh 'pip install pylint'
         }
+        stage('pylint'){
+            sh 'python -m pylint **/*.py'
+        }
         stage('navigate'){
             sh 'cd simple-django-app/cool_counters'
         }
